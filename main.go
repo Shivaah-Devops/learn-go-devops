@@ -24,5 +24,6 @@ func main() {
 	userName = "Siva"
 	ticket = 2
 	fmt.Printf("user %v booked %v tickets\n", userName, ticket)
+	fmt.Printf("check")
 
 }
