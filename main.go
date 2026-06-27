@@ -6,7 +6,7 @@ func main() {
 	//fmt.Println("Welcome to booking app!")
 	//fmt.Println("here's the place to collect tickets")
 
-	var Confname = "GO Conf"
+	Confname := "GO Conf"
 	const noofTickets = 50
 	var reminaingtickets = 50
 
