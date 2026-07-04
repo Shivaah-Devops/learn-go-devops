@@ -51,8 +51,8 @@ func main() {
 	fmt.Printf("Thank you %v for booking %v tickets. You will receive a confitmation email at %v\n", Name, tickets, email)
 	fmt.Printf("%v tickets remaining for %v\n", remainingtickets, ConfName)
 
-	fmt.Printf("The Array type is %T ")
-	fmt.Printf("The array length is %v", len(bookings))
-	fmt.Printf("The Array elements are %v", bookings)
+	fmt.Printf("The Array type is %T\n ", bookings)
+	fmt.Printf("The array length is %v\n", len(bookings))
+	fmt.Printf("The Array elements are %v\n", bookings)
 
 }
