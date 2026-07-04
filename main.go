@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	// //fmt.Println("Welcome to booking app!")
@@ -31,28 +34,50 @@ func main() {
 	const MaxTickets int = 50
 	var remainingtickets int = 50
 
-	var bookings [50]string
+	//var bookings [50]string Array declaration
+	var bookings []string //slice declaration
 
 	fmt.Printf("Welcomet to %v booking app\n", ConfName)
 	fmt.Printf("We have total number of tickets %v and still %v remaining tickets.\n", MaxTickets, remainingtickets)
 
-	var Name string
-	var email string
-	var tickets int
-	fmt.Printf("Enter the Name: ")
-	fmt.Scan(&Name)
-	fmt.Printf("Enter the email: ")
-	fmt.Scan(&email)
-	fmt.Println("Enter the number of Tickets: ")
-	fmt.Scan(&tickets)
+	//introducing loops
+	for {
+		var firstName string
+		var lastName string
+		var email string
+		var tickets int
+		fmt.Printf("Enter the FirstName: ")
+		fmt.Scan(&firstName)
+		fmt.Printf("Enter the LasttName: ")
+		fmt.Scan(&lastName)
+		fmt.Printf("Enter the email: ")
+		fmt.Scan(&email)
+		fmt.Printf("Enter the number of Tickets: ")
+		fmt.Scan(&tickets)
 
-	remainingtickets = remainingtickets - tickets
-	bookings[0] = Name
-	fmt.Printf("Thank you %v for booking %v tickets. You will receive a confitmation email at %v\n", Name, tickets, email)
-	fmt.Printf("%v tickets remaining for %v\n", remainingtickets, ConfName)
+		remainingtickets = remainingtickets - tickets
+		//bookings[0] = Name
+		bookings = append(bookings, firstName+" "+lastName)
+		fmt.Printf("Thank you %v for booking %v tickets. You will receive a confitmation email at %v\n", firstName+" "+lastName, tickets, email)
+		fmt.Printf("%v tickets remaining for %v\n", remainingtickets, ConfName)
 
-	fmt.Printf("The Array type is %T\n ", bookings)
-	fmt.Printf("The array length is %v\n", len(bookings))
-	fmt.Printf("The Array elements are %v\n", bookings)
+		// fmt.Printf("The Array type is %T\n", bookings)      Retrieving the array or slice is same
+		// fmt.Printf("The array length is %v\n", len(bookings))
+		// fmt.Printf("The Array elements are %v\n", bookings)
+
+		//get only first names
+		firstnames := []string{}
+		for _, booking := range bookings {
+			strings := strings.Fields(booking)
+			firstnames = append(firstnames, strings[0])
+		}
+
+		// fmt.Printf("The Slice type is %T\n", bookings)
+		// fmt.Printf("The slice length is %v\n", len(bookings))
+		// fmt.Printf("The slice elements are %v\n", bookings)
+
+		fmt.Printf("The first names of bookings are :%v\n", firstnames)
+
+	}
 
 }
