@@ -31,6 +31,8 @@ func main() {
 	const MaxTickets int = 50
 	var remainingtickets int = 50
 
+	var bookings [50]string
+
 	fmt.Printf("Welcomet to %v booking app\n", ConfName)
 	fmt.Printf("We have total number of tickets %v and still %v remaining tickets.\n", MaxTickets, remainingtickets)
 
@@ -45,8 +47,12 @@ func main() {
 	fmt.Scan(&tickets)
 
 	remainingtickets = remainingtickets - tickets
-
+	bookings[0] = Name
 	fmt.Printf("Thank you %v for booking %v tickets. You will receive a confitmation email at %v\n", Name, tickets, email)
 	fmt.Printf("%v tickets remaining for %v\n", remainingtickets, ConfName)
+
+	fmt.Printf("The Array type is %T ")
+	fmt.Printf("The array length is %v", len(bookings))
+	fmt.Printf("The Array elements are %v", bookings)
 
 }
