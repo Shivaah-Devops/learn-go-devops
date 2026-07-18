@@ -112,4 +112,21 @@ func main() {
 
 	}
 
+	//Just try switch
+	// switch city {
+
+	// case "India":
+	// 	//booking logic
+
+	// case "USA", "Canada":
+	// 	//booking logic for both USA and Canada
+
+	// case "Singapore":
+	// 	//booking logic
+
+	// default:
+	// 	fmt.Println("No valid city choosen")
+
+	// }
+
 }
