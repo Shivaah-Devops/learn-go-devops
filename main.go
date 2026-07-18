@@ -55,28 +55,60 @@ func main() {
 		fmt.Printf("Enter the number of Tickets: ")
 		fmt.Scan(&tickets)
 
-		remainingtickets = remainingtickets - tickets
-		//bookings[0] = Name
-		bookings = append(bookings, firstName+" "+lastName)
-		fmt.Printf("Thank you %v for booking %v tickets. You will receive a confitmation email at %v\n", firstName+" "+lastName, tickets, email)
-		fmt.Printf("%v tickets remaining for %v\n", remainingtickets, ConfName)
+		// if tickets > remainingtickets {
+		// 	fmt.Printf("Sorry, we only have %v tickets remaining, you can't book %v tickets\n", remainingtickets, tickets)
+		// 	break
+		// }
 
-		// fmt.Printf("The Array type is %T\n", bookings)      Retrieving the array or slice is same
-		// fmt.Printf("The array length is %v\n", len(bookings))
-		// fmt.Printf("The Array elements are %v\n", bookings)
+		//validating inputs
 
-		//get only first names
-		firstnames := []string{}
-		for _, booking := range bookings {
-			strings := strings.Fields(booking)
-			firstnames = append(firstnames, strings[0])
+		isValidName := len(firstName) >= 2 && len(lastName) >= 2
+		isValidEmail := strings.Contains(email, "@")
+		isValidTicketnumber := tickets > 0 && tickets <= remainingtickets
+
+		if isValidName && isValidEmail && isValidTicketnumber {
+			remainingtickets = remainingtickets - tickets
+			//bookings[0] = Name
+			bookings = append(bookings, firstName+" "+lastName)
+			fmt.Printf("Thank you %v for booking %v tickets. You will receive a confitmation email at %v\n", firstName+" "+lastName, tickets, email)
+			fmt.Printf("%v tickets remaining for %v\n", remainingtickets, ConfName)
+
+			// fmt.Printf("The Array type is %T\n", bookings)      Retrieving the array or slice is same
+			// fmt.Printf("The array length is %v\n", len(bookings))
+			// fmt.Printf("The Array elements are %v\n", bookings)
+
+			//get only first names
+			firstnames := []string{}
+			for _, booking := range bookings {
+				strings := strings.Fields(booking)
+				firstnames = append(firstnames, strings[0])
+			}
+
+			// fmt.Printf("The Slice type is %T\n", bookings)
+			// fmt.Printf("The slice length is %v\n", len(bookings))
+			// fmt.Printf("The slice elements are %v\n", bookings)
+
+			fmt.Printf("The first names of bookings are :%v\n", firstnames)
+
+			nomoretickets := remainingtickets == 0
+
+			if nomoretickets {
+				fmt.Println("No more tickets available.")
+				break
+			}
+		} else {
+			if !isValidName {
+				fmt.Println("Your first name or last name is too short")
+			}
+			if !isValidEmail {
+				fmt.Println("Your email address is missing @sign")
+			}
+			if !isValidTicketnumber {
+				fmt.Println("Your ticket number is invalid")
+			}
+			//fmt.Printf("Your input is invalid, please try again\n")
+			//fmt.Printf("Sorry, we only have %v tickets remaining, you can't book %v tickets\n", remainingtickets, tickets)
 		}
-
-		// fmt.Printf("The Slice type is %T\n", bookings)
-		// fmt.Printf("The slice length is %v\n", len(bookings))
-		// fmt.Printf("The slice elements are %v\n", bookings)
-
-		fmt.Printf("The first names of bookings are :%v\n", firstnames)
 
 	}
 
